@@ -1,0 +1,50 @@
+#home:
+#    path: /{name}
+#    controller: App\Controller\IndexController::home
+
+article_list:
+    path: /
+    controller: App\Controller\IndexController::home
+
+    
+save:
+    path: /article/save
+    controller: App\Controller\IndexController::save
+    methods: [GET, POST]
+
+new_article:
+    path: /article/new
+    controller: App\Controller\IndexController::new
+    methods: [GET, POST]
+
+show:
+    path: /article/{id}
+    controller: App\Controller\IndexController::show
+    methods: [GET, POST]
+
+
+delete_article:
+    path: /article/delete/{id}
+    controller: App\Controller\IndexController::delete
+    methods: [GET, DELETE]
+
+
+article_edit:
+    path: /article/edit/{id}
+    controller: App\Controller\IndexController::edit
+    methods: [GET, PUT, POST]
+
+new_category:
+    path: /category/newCat
+    controller: App\Controller\IndexController::newCategory
+    methods: [GET, PUT, POST]
+
+article_par_cat:
+    path: /art_cat/
+    controller: App\Controller\IndexController::articlesParCategorie
+    methods: [GET, PUT, POST]
+
+article_par_prix:
+    path: /art_prix/
+    controller: App\Controller\IndexController::articlesParPrix
+    methods: [GET, PUT, POST]
