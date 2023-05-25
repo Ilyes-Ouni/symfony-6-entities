@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Article;
+use App\Entity\Utilisateur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Article>
+ * @extends ServiceEntityRepository<Utilisateur>
  *
- * @method Article|null find($id, $lockMode = null, $lockVersion = null)
- * @method Article|null findOneBy(array $criteria, array $orderBy = null)
- * @method Article[]    findAll()
- * @method Article[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Utilisateur|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Utilisateur|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Utilisateur[]    findAll()
+ * @method Utilisateur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ArticleRepository extends ServiceEntityRepository
+class UtilisateurRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Article::class);
+        parent::__construct($registry, Utilisateur::class);
     }
 
-    public function save(Article $entity, bool $flush = false): void
+    public function save(Utilisateur $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Article $entity, bool $flush = false): void
+    public function remove(Utilisateur $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -39,22 +39,9 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
-    public function findByPriceRange($minValue,$maxValue){
-        return $this->createQueryBuilder('a')
-        ->andWhere('a.prix >= :minVal')
-        ->setParameter('minVal', $minValue)
-        ->andWhere('a.prix <= :maxVal')
-        ->setParameter('maxVal', $maxValue)
-        ->orderBy('a.id', 'ASC')
-        ->setMaxResults(10)
-        ->getQuery()
-        ->getResult();
-    }
-
-
 
 //    /**
-//     * @return Article[] Returns an array of Article objects
+//     * @return Utilisateur[] Returns an array of Utilisateur objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -68,7 +55,7 @@ class ArticleRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Article
+//    public function findOneBySomeField($value): ?Utilisateur
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

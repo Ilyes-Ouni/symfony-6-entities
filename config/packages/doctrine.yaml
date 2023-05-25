@@ -1,15 +1,10 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
-        driver: 'pdo_pgsql'
-        server_version: '13'
-        charset: utf8mb4
-        default_table_options:
-            charset: utf8mb4
-            collate: utf8mb4_unicode_ci
-        dbname: db
-        user: ilyes
-        password: ilyes
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '15'
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
@@ -21,7 +16,6 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Entity'
                 prefix: 'App\Entity'
                 alias: App
-                type: attribute
 
 when@test:
     doctrine:
